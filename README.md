@@ -1,1 +1,1 @@
-https://pashkevi49.github.io/zakrivayuschiy-teg-f/ 
+https://pashkevi49.github.io/zakrivayuschiy-teg-f/  
