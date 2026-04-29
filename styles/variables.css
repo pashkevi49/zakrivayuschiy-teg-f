@@ -2,20 +2,38 @@
   --main-font: "Inter-Variable", Arial, sans-serif;
   --accent-font: "PressStart2P", fantasy;
 
-  --page-bg-color: #7a7a7a;
+  --page-bg-color: #ffffff;
   --main-color: #000;
   --bg-color: #fff;
   --stroke-color: #fff;
 
-  --content-width: 375px;
+  --content-width: clamp(375px, 48.6vw, 700px);
 
   --header-logo-size: 49px;
   --header-title-size: 14px;
 
   --font-weight-text: 400;
-  --font-weight-title: 700;
+  --font-weight-title: 715;
 
   --contour-color: #000;
   --animation-fill-color: #ff0000;
   --button-text-color: #fff;
+
+  --page-background:
+    repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #e7e7e7 0.01%,
+      #1a1a1a 100%
+    );
 }
+

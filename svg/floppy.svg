@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 28 28">
+<svg xmlns="http://www.w3.org/2000/svg"> 
+<symbol id="floppy-icon" viewBox="0 0 28 28">
   <path fill="#000" d="M0 0h2.154v2.154H0zm0 2.154h2.154v2.154H0zm0 2.154h2.154v2.154H0zm0 2.154h2.154v2.154H0z"/>
   <path fill="#000" d="M0 8.615h2.154v2.154H0zm0 2.155h2.154v2.154H0z"/>
   <path fill="#000" d="M0 12.923h2.154v2.154H0zm0 2.154h2.154v2.154H0z"/>
