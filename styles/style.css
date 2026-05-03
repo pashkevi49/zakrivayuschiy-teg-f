@@ -2,7 +2,6 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   margin: 0;
-  display: grid;
   color: var(--main-color);
   font-family: var(--main-font), sans-serif;
   font-variation-settings: "wght" var(--font-weight-text);
@@ -18,10 +17,6 @@
 }
 
 .header {
-  position: relative;
-  grid-column: 1;
-  grid-row: 1;
-  min-block-size: 960px;
   padding-block-start: 100px;
 }
 
@@ -31,6 +26,18 @@
   justify-content: center;
   align-items: center;
   padding-block: clamp(120px, 8.9vw, 128px);
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+}
+
+.main {
+  display: grid;
+  gap: 50px;
+  padding-block-start: 100px;
+  background-color: transparent;
+}
+
+.card {
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
 }
@@ -60,28 +67,6 @@
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
-}
-
-.main {
-  grid-column: 1;
-  grid-row: 1;
-  display: grid;
-  gap: 50px;
-  inline-size: 100%;
-  margin-inline: auto;
-  padding-block-start: 567px;
-  background-color: transparent;
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0 667px,
-    var(--bg-color) 667px 100%
-  );
-  background-repeat: no-repeat;
-}
-
-.card {
-  border: 2px solid var(--main-color);
-  background-color: var(--bg-color);
 }
 
 .card__title {
@@ -127,7 +112,7 @@
 .card__image {
   display: block;
   inline-size: 100%;
-  block-size: 371px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-block-end: 2px solid var(--main-color);
 }
@@ -163,9 +148,40 @@
 
 .button {
   position: relative;
+  overflow: hidden;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-color);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--main-color);
+}
+
+.button__text,
+.save-button__icon {
+  position: relative;
+  z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
 }
 
 .button__text {
@@ -325,12 +341,9 @@
 }
 
 @media (width <=375px) {
+
   .content-section {
     max-inline-size: 100%;
-  }
-
-  .header {
-    min-block-size: 667px;
   }
 
   .header__logo-group {
@@ -382,54 +395,9 @@
   }
 }
 
-  .page {
-     background-color: var(--bg-color);
-    background-image:
-      linear-gradient(to right, #d3d3d3 0 50%, #5f5f5f 50% 67%, #1a1a1a 100%),
-      linear-gradient(#d3d3d3 0 0);
-    background-size:
-      100% 100px,
-      100% 100px;
-    background-position:
-      left 427px,
-      left top;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-  }
-
-  .main {
-    padding-block-start: 527px;
-  }
-}
-
 @media (min-width: 1440px) {
    .page {
     min-inline-size: 1440px;
-    min-block-size: 100dvb;
-    margin: 0;
-    color: var(--main-color);
-    font-family: var(--main-font);
-    font-variation-settings: "wght" var(--font-weight-text);
-    background-color: var(--bg-color);
-    background-image:
-      linear-gradient(
-        to bottom,
-        transparent 0 940px,
-        var(--bg-color) 940px 100%
-      ),
-      var(--page-background);
-    background-size:
-      100% 100%,
-      cover;
-    background-position:
-      top center,
-      top center;
-    background-repeat:
-      no-repeat,
-      no-repeat;
-    background-attachment:
-      scroll,
-      fixed;
   }
 
  .header {
@@ -476,19 +444,31 @@
   }
 
   .main {
-    grid-column: 1;
-    grid-row: 1;
     inline-size: 100%;
     max-inline-size: 1440px;
-    margin: 0 auto;
-    padding-top: 566px;
-    padding-bottom: 0;
+    margin-inline: auto;
     position: relative;
-    z-index: 2;
-    background: transparent;
+    isolation: isolate;
+    display: grid;
+    gap: 50px;
+    padding-block-start: 100px;
+    background-color: transparent;
+  }
+
+   .main::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 450px;
+    inset-block-end: 0;
+    z-index: 0;
+    background-color: var(--bg-color);
+    pointer-events: none;
   }
 
   .card {
+    position: relative;
+    z-index: 1;
     inline-size: var(--content-width);
     margin-inline: auto;
     border: 2px solid var(--main-color);
